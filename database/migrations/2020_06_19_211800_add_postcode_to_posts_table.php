@@ -13,9 +13,9 @@ class AddPostcodeToPostsTable extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function($table) {
-            $table->text('postcode');
-        });
+//        Schema::table('posts', function($table) {
+//            $table->text('postcode');
+//        });
     }
 
     /**
@@ -25,8 +25,8 @@ class AddPostcodeToPostsTable extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function($table) {
-            $table->dropColumn('postcode');
-        });
+//        Schema::table('posts', function($table) {
+//            $table->dropColumn('postcode');
+//        });
     }
 }
