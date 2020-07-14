@@ -51,6 +51,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'username' => ['required', 'string', 'max:255', 'unique:users', 'alpha_dash'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -70,11 +71,11 @@ class RegisterController extends Controller
 //        Mail::send('emails.register', $registermessage, function($message){
 //            $message->to('ch2shahid@gmail.com','New User')->subject('Hello, How are you');
 //        });
-        Mail::to('ch2shahid@gmail.com')->send(new \App\Mail\RegisterMail($registermessage));
+       // Mail::to('ch2shahid@gmail.com')->send(new \App\Mail\RegisterMail($registermessage));
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'password' => $data['password'],
         ]);
     }
 }

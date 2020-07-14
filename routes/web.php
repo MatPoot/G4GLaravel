@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function(){
     Route::patch('/admin/posts/{post}/update', 'PostController@update')->name('post.update');
     Route::get('/admin/posts/{post}/edit', 'PostController@edit')->middleware('can:view,post')->name('post.edit');
 
+
+    Route::get('/admin/users/{user}/profile','UserController@show')->name('user.profile.show');
+
 //    bind the post class using {}
 
 
