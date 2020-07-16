@@ -73,6 +73,7 @@ class RegisterController extends Controller
 //        });
        // Mail::to('ch2shahid@gmail.com')->send(new \App\Mail\RegisterMail($registermessage));
         return User::create([
+            'username'=> $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $data['password'],

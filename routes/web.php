@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/admin/posts/create','PostController@create')->name('post.create');
     Route::get('/admin/posts','PostController@index')->name('post.index');
 
-    Route::get('/admin/posts/userindex','AdminsController@userindex')->name('post.userindex');
+   // Route::get('/admin/posts/userindex','AdminsController@userindex')->name('post.userindex');
     //Route::get('/admin/posts/{user}/edit','AdminsController@useredit')->name('post.useredit'); the url ends up going to the same place as the normal edit, change its url
 
 
@@ -32,6 +32,9 @@ Route::middleware('auth')->group(function(){
 
 
     Route::get('/admin/users/{user}/profile','UserController@show')->name('user.profile.show');
+    Route::put('/admin/users/{user}/update','UserController@update')->name('user.profile.update');
+
+    Route::get('admin/users','UserController@index')->name('users.index');
 
 //    bind the post class using {}
 
