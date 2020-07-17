@@ -2,6 +2,10 @@
     @section('content')
         <h1>Users</h1>
 
+        @if(session('user-deleted'))
+            <div class="alert alert-danger">{{session('user-deleted')}}</div>
+        @endif
+
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="users-table" width="100%" cellspacing="0">
@@ -12,8 +16,8 @@
                         <th>Name</th>
                         <th>Created</th>
                         <th>Type</th>
-                        <th>Edit</th>
-                        {{--                            <th>Delete</th>--}}
+
+                        <th>Delete</th>
 
                     </tr>
                     </thead>
@@ -24,8 +28,8 @@
                         <th>Name</th>
                         <th>Created</th>
                         <th>Type</th>
-                        <th>Edit</th>
-                        {{--                            <th>Delete</th>--}}
+
+                        <th>Delete</th>
 
                     </tr>
                     </tfoot>
@@ -38,19 +42,12 @@
                             <td>{{$appusers->created_at}}</td>
                             <td>{{$appusers->usertype}}</td>
 
-                            <td>
-{{--                                <a href="{{route('post.useredit',$appusers->id)}}">{{$appusers->title}}</a>--}}
-                            </td>
+                            <td><form method="post" action="{{route('user.destroy', $appusers->id)}}" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="'btn btn-danger">Delete</button>
+                                </form></td>
 
-
-                            {{--                                <td>--}}
-                            {{--                                    <form method="post" action="{{route('post.destroy', $post->id)}}" enctype="multipart/form-data">--}}
-                            {{--                                        @csrf--}}
-                            {{--                                        @method('DELETE')--}}
-                            {{--                                        <button class="'btn btn-danger">Delete</button>--}}
-                            {{--                                    </form>--}}
-
-                            {{--                                </td>--}}
                         </tr>
                     @endforeach
                     </tbody>

@@ -31,10 +31,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/admin/posts/{post}/edit', 'PostController@edit')->middleware('can:view,post')->name('post.edit');
 
 
-    Route::get('/admin/users/{user}/profile','UserController@show')->name('user.profile.show');
+
     Route::put('/admin/users/{user}/update','UserController@update')->name('user.profile.update');
 
-    Route::get('admin/users','UserController@index')->name('users.index');
+
+    Route::delete('admin/users/{user}/destroy','UserController@destroy')->name('user.destroy');
 
 //    bind the post class using {}
 
@@ -52,6 +53,15 @@ Route::middleware('auth')->group(function(){
     });
 
 
+});
+// use lowercase admin only, see lecture 222
+Route::middleware(['role:admin','auth'])->group(function(){
+Route::get('admin/users','UserController@index')->name('users.index');
+
+});
+
+Route::middleware('auth')->group(function(){
+    Route::get('/admin/users/{user}/profile','UserController@show')->name('user.profile.show');
 });
 
 

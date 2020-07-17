@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-//use App\User;
+use Illuminate\Support\Str;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = ['username', 'name', 'email', 'password'];
-//    protected $guarded = ['id','email_verified_at','remember_token','created_at','updated_at'];
+
 
     /**
      * The attributes that should be hidden for arrays.
