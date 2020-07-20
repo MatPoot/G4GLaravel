@@ -2,4 +2,5 @@
 $(document).ready(function() {
   $('#dataTable').DataTable();
   $('#users-table').DataTable();
+    $('#RoleTable').DataTable();
 });

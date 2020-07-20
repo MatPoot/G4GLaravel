@@ -55,13 +55,17 @@ Route::middleware('auth')->group(function(){
 
 });
 // use lowercase admin only, see lecture 222
-Route::middleware(['role:admin','auth'])->group(function(){
+Route::middleware(['role:Admin','auth'])->group(function(){
 Route::get('admin/users','UserController@index')->name('users.index');
+    Route::get('/admin/users/{user}/profile','UserController@show')->name('user.profile.show');
+
+    Route::put('/users/{user}/attach', 'UserController@attach')->name('user.role.attach');
+    Route::put('/users/{user}/detach', 'UserController@detach')->name('user.role.detach');
 
 });
 
-Route::middleware('auth')->group(function(){
-    Route::get('/admin/users/{user}/profile','UserController@show')->name('user.profile.show');
+Route::middleware(['role:admin'])->group(function(){
+
 });
 
 

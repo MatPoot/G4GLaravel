@@ -15,7 +15,7 @@ class RoleMiddleWare
      */
     public function handle($request, Closure $next, $role)
     {
-        if($request->user()->userHasRole($role)){
+        if(!$request->user()->userHasRole($role)){
             abort(403,'This is not a permitted action for this user');
         }
         return $next($request);
