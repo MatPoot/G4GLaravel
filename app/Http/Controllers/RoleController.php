@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -24,6 +25,21 @@ class RoleController extends Controller
         ]);
         return back();
     }
+
+    public function attachPermission(Role $role){
+        $role->permissions()->attach(request(('permission')));
+
+        return back();
+    }
+
+    public function detachPermission(Role $role){
+        $role->permissions()->detach(request(('permission')));
+
+        return back();
+    }
+
+
+
     public function destroy(Role $role){
         $role->delete();
         session()->flash('role-deleted','Role has been deleted');
@@ -32,7 +48,7 @@ class RoleController extends Controller
 
     public function edit (Role $role){
 
-        return view('admin.roles.edit', ['role'=>$role]);
+        return view('admin.roles.edit', ['role'=>$role,'permissions'=>Permission::all()]);
 
     }
 

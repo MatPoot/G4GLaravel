@@ -58,10 +58,10 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <x-admin-sidebar-posts-links></x-admin-sidebar-posts-links>
 
-        @if(auth()->user()->userHasRole('Admin'))
+{{--        @if(auth()->user()->userHasRole('Admin'))--}}
             <x-admin-sidebar-users-links></x-admin-sidebar-users-links>
             <x-authorization-links></x-authorization-links>
-        @endif
+{{--        @endif--}}
 
 
 

@@ -11,3 +11,10 @@ Route::get('/roles/{role}/edit', 'RoleController@edit')->name('roles.edit');
 
 Route::patch('/roles/{role}/update', 'RoleController@update')->name('roles.update');
 
+
+Route::patch('/roles/{role}/attach', 'RoleController@attachPermission')->name('roles.permission.attach');
+
+Route::patch('/roles/{role}/detach', 'RoleController@detachPermission')->name('roles.permission.detach');
+
+
+
