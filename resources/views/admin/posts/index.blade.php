@@ -61,13 +61,13 @@
                             <td>{{$post->updated_at}}</td>
                             <td><a href="{{route('post.edit',$post->id)}}">{{$post->title}}</a></td>
                             <td>
-                                @can('view',$post)
+{{--                                @can('view',$post)--}}
                                 <form method="post" action="{{route('post.destroy', $post->id)}}" enctype="multipart/form-data">
                                     @csrf
                                     @method('DELETE')
                                     <button class="'btn btn-danger">Delete</button>
                                 </form>
-                                @endcan
+{{--                                @endcan--}}
                             </td>
                         </tr>
                         @endforeach

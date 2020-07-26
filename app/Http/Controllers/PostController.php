@@ -14,14 +14,14 @@ class PostController extends Controller
     }
 
     public function create(){
-        $this->authorize('create',Post::class);
+       // $this->authorize('create',Post::class);
         return view('admin.posts.create');
     }
     public function store(){
 //        auth()->user(); // grab the user token/id as well
 //        dd(request()->all()); // log of all values
         //$this->authorize('store',$post);
-        $this->authorize('create',Post::class);
+       // $this->authorize('create',Post::class);
         $inputs = request()->validate([
             'title'=>'required|min:8|max:255',
             'post_image'=> 'mimes:jpg,jpeg,png',
@@ -38,7 +38,7 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        $this->authorize('delete',$post);
+       // $this->authorize('delete',$post);
         $post->delete();
         Session::flash('message','Listing was deleted');
         return back(); // returns user back to the original page they sent the request from
